@@ -41,7 +41,26 @@ plt.figure(figsize=(16,6))
 for i in(range(10)):
     plt.subplot(2,5,i+1)
     image, label = train_loader.dataset.__getitem__(i)
-    plt.imshow(image.reshape(28,28), cmap='gray')
+    plt.imshow(image.reshape(28,28), cmap='gray')#reshape data
+    plt.axis('off')
+plt.show()#show the plot
+
+# now to permitate the data
+perm = torch.randperm(input_size)
+plt.figure(figsize=(16,12))
+for i in(range(10)):
+    #get image
+    image, label = train_loader.dataset.__getitem__(i)
+    #permutate pixels
+    image_perm = image.view(input_size)# to row
+    image_perm = image_perm[perm]# permutate pixels
+    image_perm = image_perm.view(28,28)#change to 28x28
+    plt.subplot(4,5,i+1)
+    plt.imshow(image.reshape(28,28), cmap='gray')#reshape data
+    plt.axis('off')
+    plt.subplot(4, 5, i + 11)
+    plt.imshow(image_perm, cmap='gray')# no need to reshape
     plt.axis('off')
 plt.show()
+
 
