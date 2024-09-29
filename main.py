@@ -102,12 +102,12 @@ class CNN(nn.Module):
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=n_feature, kernel_size=5)
         self.conv2 = nn.Conv2d(in_channels=n_feature, out_channels=n_feature, kernel_size=5)
         self.fc1 = nn.Linear(n_feature*4*4, 50)
-        self.fc2 = nn.Linear(50, output_size)
-    def forward(self, x):
+        self.fc2 = nn.Linear(50, 10)
+    def forward(self, x): # layer 1
         x = self.conv1(x) # 28x 28 x1 -> 24(= 28-5+1)x24(= 28-5+1)xn_features
         x = F.relu(x)
         x = F.max_pool2d(x,kernel_size=2)# maxpool reduce size to 12x12xn_features
-        # layer
+        # layer 2
         x = self.conv2(x)  # 12x12x1 -> 8(= 12-5+1)x8(= 12-5+1)xn_features
         x = F.relu(x)
         x = F.max_pool2d(x, kernel_size=2)  # maxpool reduce size to 4x4xn_features
