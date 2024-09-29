@@ -131,10 +131,10 @@ def train(model, optimizer, perm = None):
     model.train()#train model
     for epoch in range(epochs):
         with tqdm(train_loader, unit='batch') as tepoch:
-            for batch_idx, (data, target) in enumerate(tepoch):
+            for batch_idx, (data, label) in enumerate(tepoch):
                 tepoch.set_description(f'Epoch {epoch}')
                 #send to device
-                data ,label = data.to(device),label.to(device)
+                data ,label = data.to(device), label.to(device)
                 #permutate pixels
                 if perm is not None:
                     data = data.view(-1,28,28)
@@ -156,7 +156,7 @@ def test(model):
     correct = 0
 
     with tqdm(test_loader, unit='batch') as loader:
-        for data, target in loader:
+        for data, label in loader:
              #send to device
             data,label = data.to(device),label.to(device)
              # permutate pixels
