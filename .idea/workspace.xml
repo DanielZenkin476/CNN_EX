@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added train function with option to premutate pixels">
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="changed in test and train in for loop from data, target to data, label( pycharm ai is not so smart)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -138,7 +138,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727622985595</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added train test function">
+      <option name="closed" value="true" />
+      <created>1727623788370</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727623788370</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fixed line issues, encountered nug in line 137">
+      <option name="closed" value="true" />
+      <created>1727623905209</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727623905209</updated>
+    </task>
+    <task id="LOCAL-00011" summary="changed in test and train in for loop from data, target to data, label( pycharm ai is not so smart)">
+      <option name="closed" value="true" />
+      <created>1727624063295</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727624063295</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -150,6 +174,9 @@
     <MESSAGE value="added CNN class - 2 CL and 2 FCL with RELU" />
     <MESSAGE value="fixed line error" />
     <MESSAGE value="added train function with option to premutate pixels" />
-    <option name="LAST_COMMIT_MESSAGE" value="added train function with option to premutate pixels" />
+    <MESSAGE value="added train test function" />
+    <MESSAGE value="fixed line issues, encountered nug in line 137" />
+    <MESSAGE value="changed in test and train in for loop from data, target to data, label( pycharm ai is not so smart)" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed in test and train in for loop from data, target to data, label( pycharm ai is not so smart)" />
   </component>
 </project>

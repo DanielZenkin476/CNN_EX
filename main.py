@@ -164,9 +164,9 @@ def test(model):
                 data = data.view(-1, 28, 28)
                 data = data[:, perm]
                 data = data.view(-1, 1, 28, 28)
-            output = model(data)
 
-            test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss
+            output = model(data)
+            test_loss += F.nll_loss(output, label.view_as(output), reduction='sum').item()  # sum up batch loss
             pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
             correct += pred.eq(label.data.view_as(pred)).cpu().sum().item()# add if pred is corret
 
@@ -177,9 +177,11 @@ def test(model):
         return accuracy
 
 results = {}
+print("FNN:")
 optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
 train(model_fnn, optimizer_fnn)
 results['NN image'] = test(model_fnn)
+print("CNN")
 optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
 train(model_cnn, optimizer_cnn)
 results['CNN image'] = test(model_cnn)
