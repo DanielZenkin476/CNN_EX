@@ -176,6 +176,12 @@ def test(model):
             f'\nTest set: Average loss: {round(test_loss, 2)}, Accuracy: {correct}/{len(test_loader.dataset)} ({round(accuracy)}%)')
         return accuracy
 
-    results = {}
-    optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
-    train(model_fnn, optimizer_fnn)
+results = {}
+optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
+train(model_fnn, optimizer_fnn)
+results['NN image'] = test(model_fnn)
+optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
+train(model_cnn, optimizer_cnn)
+results['CNN image'] = test(model_cnn)
+print(results)
+
