@@ -117,8 +117,8 @@ class CNN(nn.Module):
         x = F.relu(x)
         return F.log_softmax(x, dim=1)# return last layer
 
-    n_features = 6  # number of feature maps
+n_features = 6  # number of feature maps
 
-    model_cnn = CNN(input_size, n_features, output_size).to(device)
-    summary(model_cnn, input_size=(1, 28, 28))
+model_cnn = CNN(input_size, n_features, output_size).to(device)
+summary(model_cnn, input_size=(1, 28, 28))
 
