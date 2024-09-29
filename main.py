@@ -166,7 +166,7 @@ def test(model):
                 data = data.view(-1, 1, 28, 28)
             output = model(data)
             print(f"output shape: {output.shape}, label shape: {label.shape}")
-            test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss
+            test_loss += F.nll_loss(output[:label.size(0)], label, reduction='sum').item()  # sum up batch loss
             pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
             correct += pred.eq(label.data.view_as(pred)).cpu().sum().item()# add if pred is corret
 
