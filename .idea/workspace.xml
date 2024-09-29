@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="fixed line error">
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added train function with option to premutate pixels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -130,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727622291358</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added train function with option to premutate pixels">
+      <option name="closed" value="true" />
+      <created>1727622985595</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727622985595</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -141,6 +149,7 @@
     <MESSAGE value="added 3 Layer FCC model and printed out summary and model itself" />
     <MESSAGE value="added CNN class - 2 CL and 2 FCL with RELU" />
     <MESSAGE value="fixed line error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed line error" />
+    <MESSAGE value="added train function with option to premutate pixels" />
+    <option name="LAST_COMMIT_MESSAGE" value="added train function with option to premutate pixels" />
   </component>
 </project>

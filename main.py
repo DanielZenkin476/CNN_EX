@@ -18,6 +18,7 @@ input_size = 28*28 # image is 28x28 pixels
 output_size = 10 # 10 classes - 0 to 9
 norm_mean = 0.5
 norm_std = 0.5
+epochs = 3
 # download data
 train_loader = data.DataLoader(datasets.MNIST('../data', train=True, download=True,
                    transform=transforms.Compose([transforms.ToTensor(),
@@ -126,7 +127,6 @@ summary(model_cnn, input_size=(1, 28, 28))
 # now that we have the modeles ,need to create traning function
 
 criterion = torch.nn.NLLLoss()
-epochs = 5
 def train(model, optimizer, perm = None):
     model.train()#train model
     for epoch in range(epochs):
@@ -150,5 +150,32 @@ def train(model, optimizer, perm = None):
                 tepoch.set_postfix(
                     batch_loss=loss.item())  # Tensor.item() → number returns the value of this tensor as a standard Python number. This only works for tensors with one element.
 
+def test(model):
+    model.eval()
+    test_loss = 0
+    correct = 0
 
+    with tqdm(test_loader, unit='batch') as loader:
+        for data, target in loader:
+             #send to device
+            data,label = data.to(device),label.to(device)
+             # permutate pixels
+            if perm is not None:
+                data = data.view(-1, 28, 28)
+                data = data[:, perm]
+                data = data.view(-1, 1, 28, 28)
+            output = model(data)
 
+            test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss
+            pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
+            correct += pred.eq(label.data.view_as(pred)).cpu().sum().item()# add if pred is corret
+
+        test_loss /= len(test_loader.dataset)
+        accuracy = 100. * correct / len(test_loader.dataset)
+        print(
+            f'\nTest set: Average loss: {round(test_loss, 2)}, Accuracy: {correct}/{len(test_loader.dataset)} ({round(accuracy)}%)')
+        return accuracy
+
+    results = {}
+    optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
+    train(model_fnn, optimizer_fnn)
