@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="change of approach - maybe CNN module has a problem, label dousent match output but it does in first one - deleted a relu in forward path - maybe it">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss, trying to change output struct" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727624627332</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss">
+      <option name="closed" value="true" />
+      <created>1727625224822</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727625224822</updated>
+    </task>
+    <task id="LOCAL-00015" summary="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss, trying to change output struct">
+      <option name="closed" value="true" />
+      <created>1727625313766</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727625313766</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -194,6 +208,8 @@
     <MESSAGE value="changed in test and train in for loop from data, target to data, label( pycharm ai is not so smart)" />
     <MESSAGE value="changed in test and train in for loop from data, target to data, label( pycharm ai is not so smart), fixed mismatch of batch size in line 169( added label.view_as(output) insted of label" />
     <MESSAGE value="change of approach - maybe CNN module has a problem, label dousent match output but it does in first one - deleted a relu in forward path - maybe it" />
-    <option name="LAST_COMMIT_MESSAGE" value="change of approach - maybe CNN module has a problem, label dousent match output but it does in first one - deleted a relu in forward path - maybe it" />
+    <MESSAGE value="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss" />
+    <MESSAGE value="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss, trying to change output struct" />
+    <option name="LAST_COMMIT_MESSAGE" value="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss, trying to change output struct" />
   </component>
 </project>
