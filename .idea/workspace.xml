@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="changed device to cuda:0 and displayed device">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="loaded data from MINIST dataset,displayed data properties">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,12 +81,21 @@
       <option name="project" value="LOCAL" />
       <updated>1727618675553</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="loaded data from MINIST dataset,displayed data properties">
+      <option name="closed" value="true" />
+      <created>1727619237620</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727619237620</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changed device to cuda:0 and displayed device" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed device to cuda:0 and displayed device" />
+    <MESSAGE value="loaded data from MINIST dataset,displayed data properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="loaded data from MINIST dataset,displayed data properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
