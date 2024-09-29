@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added 3 Layer FCC model and printed out summary and model itself">
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="fixed line error">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +114,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727620809881</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added CNN class - 2 CL and 2 FCL with RELU">
+      <option name="closed" value="true" />
+      <created>1727622255431</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727622255431</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixed line error">
+      <option name="closed" value="true" />
+      <created>1727622291358</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727622291358</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -122,6 +139,8 @@
     <MESSAGE value="added visualization of data" />
     <MESSAGE value="added permutation of images, added comments and more visualization" />
     <MESSAGE value="added 3 Layer FCC model and printed out summary and model itself" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 3 Layer FCC model and printed out summary and model itself" />
+    <MESSAGE value="added CNN class - 2 CL and 2 FCL with RELU" />
+    <MESSAGE value="fixed line error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed line error" />
   </component>
 </project>

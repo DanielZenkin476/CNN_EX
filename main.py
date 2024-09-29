@@ -7,6 +7,7 @@ from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
 import numpy
 from torchsummary import summary
+from tqdm import tqdm
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")# select cuda cores
 print(device)#check device
@@ -121,4 +122,33 @@ n_features = 6  # number of feature maps
 
 model_cnn = CNN(input_size, n_features, output_size).to(device)
 summary(model_cnn, input_size=(1, 28, 28))
+
+# now that we have the modeles ,need to create traning function
+
+criterion = torch.nn.NLLLoss()
+epochs = 5
+def train(model, optimizer, perm = None):
+    model.train()#train model
+    for epoch in range(epochs):
+        with tqdm(train_loader, unit='batch') as tepoch:
+            for batch_idx, (data, target) in enumerate(tepoch):
+                tepoch.set_description(f'Epoch {epoch}')
+                #send to device
+                data ,label = data.to(device),label.to(device)
+                #permutate pixels
+                if perm is not None:
+                    data = data.view(-1,28,28)
+                    data = data[:,perm]
+                    data = data.view(-1,1,28,28)
+
+                optimizer.zero_grad()#zero optimizer gradients
+                output = model(data)# get output
+                loss = criterion(output,label)# get loss
+                loss.backward()# backprop
+                optimizer.step()#forward
+
+                tepoch.set_postfix(
+                    batch_loss=loss.item())  # Tensor.item() → number returns the value of this tensor as a standard Python number. This only works for tensors with one element.
+
+
 
