@@ -90,6 +90,35 @@ n_hidden = 8
 model_fnn = FC2Layer(input_size, n_hidden, output_size).to(device)# send to device
 print(model_fnn)# print model
 summary(model_fnn, input_size=(1,28*28))# summary of data
-# second model - CNN(the good kind)
 
+# second model - CNN(the good kind)
+#kernal size is 5 , input channels (1 - greyscale)
+class CNN(nn.Module):
+    def __init__(self, input_size,n_feature, output_size):
+        super(CNN, self).__init__()
+        self.n_feature = n_feature
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=n_feature, kernel_size=5)
+        self.conv2 = nn.Conv2d(in_channels=n_feature, out_channels=n_feature, kernel_size=5)
+        self.fc1 = nn.Linear(n_feature*4*4, 50)
+        self.fc2 = nn.Linear(50, output_size)
+    def forward(self, x):
+        x = self.conv1(x) # 28x 28 x1 -> 24(= 28-5+1)x24(= 28-5+1)xn_features
+        x = F.relu(x)
+        x = F.max_pool2d(x,kernel_size=2)# maxpool reduce size to 12x12xn_features
+        # layer
+        x = self.conv2(x)  # 12x12x1 -> 8(= 12-5+1)x8(= 12-5+1)xn_features
+        x = F.relu(x)
+        x = F.max_pool2d(x, kernel_size=2)  # maxpool reduce size to 4x4xn_features
+
+        x = x.view(-1,self.n_feature*4*4)# flatten data
+        x= self.fc1(x)#fc layer 1
+        x = F.relu(x)
+        x = self.fc2(x)#fc layer 2
+        x = F.relu(x)
+        return F.log_softmax(x, dim=1)# return last layer
+
+    n_features = 6  # number of feature maps
+
+    model_cnn = CNN(input_size, n_features, output_size).to(device)
+    summary(model_cnn, input_size=(1, 28, 28))
 
