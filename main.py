@@ -6,6 +6,7 @@ import torch.utils.data as data
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
 import numpy
+from torchsummary import summary
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")# select cuda cores
 print(device)#check device
@@ -62,5 +63,33 @@ for i in(range(10)):
     plt.imshow(image_perm, cmap='gray')# no need to reshape
     plt.axis('off')
 plt.show()
+
+# now onto models
+
+#model 1 - fully connected , 3layer output is log softmax -
+
+class FC2Layer( nn.Module):
+    def __init__(self, input_size,n_hidden, output_size):
+        super(FC2Layer, self).__init__()
+        self.input_size = input_size
+        self.network = nn.Sequential(
+            nn.Linear(input_size, n_hidden),# layer 1  ixn
+            nn.ReLU(),
+            nn.Linear(n_hidden, n_hidden),# layer 2  nxn
+            nn.ReLU(),
+            nn.Linear(n_hidden, output_size),  #layer 3 nxo
+            nn.LogSoftmax(dim=1)
+        )
+    def forward(self, x):# forward path
+        x= x.view(-1, self.input_size)#flatten data
+        return self.network(x)# to network
+
+n_hidden = 8
+# param = n_hidden *(28*28 +1) = 6280
+
+model_fnn = FC2Layer(input_size, n_hidden, output_size).to(device)# send to device
+print(model_fnn)# print model
+summary(model_fnn, input_size=(1,28*28))# summary of data
+# second model - CNN(the good kind)
 
 

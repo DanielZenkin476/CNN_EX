@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added visualization of data">
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added permutation of images, added comments and more visualization">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,14 +97,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727619482296</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added permutation of images, added comments and more visualization">
+      <option name="closed" value="true" />
+      <created>1727620372648</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727620372648</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changed device to cuda:0 and displayed device" />
     <MESSAGE value="loaded data from MINIST dataset,displayed data properties" />
     <MESSAGE value="added visualization of data" />
-    <option name="LAST_COMMIT_MESSAGE" value="added visualization of data" />
+    <MESSAGE value="added permutation of images, added comments and more visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="added permutation of images, added comments and more visualization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
