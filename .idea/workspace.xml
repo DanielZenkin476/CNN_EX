@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="#problem with test func- checking sizes, changed size of utput used in nll loss - need to check if ok, might ne another problem">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added runs with permutation, changed in loop perm to pm ( to not use global var)">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +209,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727625762243</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="+#problem with test func-  fixed by adding perm variable in inputs to test function, changed to pm so wont confuse for global var">
+      <option name="closed" value="true" />
+      <created>1727689522920</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727689522920</updated>
+    </task>
+    <task id="LOCAL-00019" summary="so the problem with test was a symptom from a permutation error (in dimensions) that fed too much data to model which caused the output to go BIG . should work now, need to test">
+      <option name="closed" value="true" />
+      <created>1727690204766</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1727690204766</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added runs with permutation, changed in loop perm to pm ( to not use global var)">
+      <option name="closed" value="true" />
+      <created>1727690463110</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727690463110</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -231,6 +254,9 @@
     <MESSAGE value="problem with test function - line 169 - sizes are not the same&#10;test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss, trying to change output struct" />
     <MESSAGE value="#problem with test func- checking sizes" />
     <MESSAGE value="#problem with test func- checking sizes, changed size of utput used in nll loss - need to check if ok, might ne another problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="#problem with test func- checking sizes, changed size of utput used in nll loss - need to check if ok, might ne another problem" />
+    <MESSAGE value="+#problem with test func-  fixed by adding perm variable in inputs to test function, changed to pm so wont confuse for global var" />
+    <MESSAGE value="so the problem with test was a symptom from a permutation error (in dimensions) that fed too much data to model which caused the output to go BIG . should work now, need to test" />
+    <MESSAGE value="added runs with permutation, changed in loop perm to pm ( to not use global var)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added runs with permutation, changed in loop perm to pm ( to not use global var)" />
   </component>
 </project>

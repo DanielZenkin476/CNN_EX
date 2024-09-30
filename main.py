@@ -187,9 +187,8 @@ print("CNN:")
 optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
 train(model_cnn, optimizer_cnn, pm=None)
 results['CNN image'] = test(model_cnn, pm=None)
-print(results)
 
-print['now with permutation:']
+print('now with permutation:')
 print("FNN:")
 model_fnn = FC2Layer(input_size, n_hidden, output_size).to(device)
 optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
@@ -201,4 +200,12 @@ model_cnn = CNN(input_size, n_feature, output_size).to(device)
 optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
 train(model_cnn, optimizer_cnn, pm=perm)
 results['CNN image permutation'] = test(model_cnn, pm=perm)
-print(results)
+
+
+# now to plot the results
+
+plt.bar(results.keys(), results.values(), width=0.4, color = ['r', 'g', 'b', 'y'])
+plt.ylim((min(results.values())-1, 100))
+plt.ylabel('Accuracy')
+plt.title('Results')
+plt.show()
