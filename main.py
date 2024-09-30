@@ -58,6 +58,7 @@ for i in(range(10)):
     image_perm = image.view(input_size)# to row
     image_perm = image_perm[perm]# permutate pixels
     image_perm = image_perm.view(28,28)#change to 28x28
+    #plot images
     plt.subplot(4,5,i+1)
     plt.imshow(image.reshape(28,28), cmap='gray')#reshape data
     plt.axis('off')
@@ -100,35 +101,37 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         self.n_feature = n_feature
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=n_feature, kernel_size=5)
-        self.conv2 = nn.Conv2d(in_channels=n_feature, out_channels=n_feature, kernel_size=5)
+        self.conv2 = nn.Conv2d(n_feature, n_feature, kernel_size=5)
         self.fc1 = nn.Linear(n_feature*4*4, 50)
-        self.fc2 = nn.Linear(50, 10)
+        self.fc2 = nn.Linear(50, output_size)
     def forward(self, x): # layer 1
         x = self.conv1(x) # 28x 28 x1 -> 24(= 28-5+1)x24(= 28-5+1)xn_features
         x = F.relu(x)
         x = F.max_pool2d(x,kernel_size=2)# maxpool reduce size to 12x12xn_features
+
         # layer 2
         x = self.conv2(x)  # 12x12x1 -> 8(= 12-5+1)x8(= 12-5+1)xn_features
         x = F.relu(x)
         x = F.max_pool2d(x, kernel_size=2)  # maxpool reduce size to 4x4xn_features
-
+        #FCC part:
         x = x.view(-1,self.n_feature*4*4)# flatten data
         x = self.fc1(x)#fc layer 1
         x = F.relu(x)
         x = self.fc2(x)#fc layer 2
-        x = F.log_softmax(x, dim=1)# Softmax layer
+        x = F.log_softmax(x,dim =1)# Softmax layer
         return x
 
-n_features = 6  # number of feature maps
+n_feature = 6  # number of feature maps
 
-model_cnn = CNN(input_size, n_features, output_size).to(device)
+model_cnn = CNN(input_size, n_feature, output_size).to(device)
 summary(model_cnn, input_size=(1, 28, 28))
 
 # now that we have the modeles ,need to create traning function
 
-criterion = torch.nn.NLLLoss()
-def train(model, optimizer, perm = None):
+criterion = torch.nn.NLLLoss() # The input given through a forward call is expected to contain log-probabilities of each class.
+def train(model, optimizer, pm = None ):
     model.train()#train model
+
     for epoch in range(epochs):
         with tqdm(train_loader, unit='batch') as tepoch:
             for batch_idx, (data, label) in enumerate(tepoch):
@@ -136,21 +139,21 @@ def train(model, optimizer, perm = None):
                 #send to device
                 data ,label = data.to(device), label.to(device)
                 #permutate pixels
-                if perm is not None:
+
+                if pm is not None:
                     data = data.view(-1,28,28)
                     data = data[:,perm]
                     data = data.view(-1,1,28,28)
 
                 optimizer.zero_grad()#zero optimizer gradients
-                output = model(data)# get output
+                output = model(data) # get output
                 loss = criterion(output,label)# get loss
                 loss.backward()# backprop
                 optimizer.step()#forward
 
-                tepoch.set_postfix(
-                    batch_loss=loss.item())  # Tensor.item() → number returns the value of this tensor as a standard Python number. This only works for tensors with one element.
+                tepoch.set_postfix(batch_loss=loss.item()) # Tensor.item() → number returns the value of this tensor as a standard Python number. This only works for tensors with one element.
 
-def test(model):
+def test(model,pm = None):
     model.eval()
     test_loss = 0
     correct = 0
@@ -160,16 +163,15 @@ def test(model):
              #send to device
             data,label = data.to(device),label.to(device)
              # permutate pixels
-            if perm is not None:
+            if pm is not None:
                 data = data.view(-1, 28, 28)
                 data = data[:, perm]
                 data = data.view(-1, 1, 28, 28)
-            output = model(data)
-            print(f"output shape: {output.shape}, label shape: {label.shape}")
-            test_loss += F.nll_loss(output[:label.size(0)], label, reduction='sum').item()  # sum up batch loss
-            pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
-            correct += pred.eq(label.data.view_as(pred)).cpu().sum().item()# add if pred is corret
 
+            output = model(data)
+            test_loss += F.nll_loss(output, label, reduction='sum').item()  # sum up batch loss
+            pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
+            correct += pred.eq(label.data.view_as(pred)).cpu().sum().item()
         test_loss /= len(test_loader.dataset)
         accuracy = 100. * correct / len(test_loader.dataset)
         print(
@@ -179,11 +181,11 @@ def test(model):
 results = {}
 print("FNN:")
 optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
-train(model_fnn, optimizer_fnn)
-results['NN image'] = test(model_fnn)
+train(model_fnn, optimizer_fnn, pm=None)
+results['NN image'] = test(model_fnn, pm=None)
 print("CNN")
 optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
-train(model_cnn, optimizer_cnn)
-results['CNN image'] = test(model_cnn)
+train(model_cnn, optimizer_cnn, pm=None)
+results['CNN image'] = test(model_cnn, pm=None)
 print(results)
 
