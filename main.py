@@ -141,9 +141,9 @@ def train(model, optimizer, pm = None ):
                 #permutate pixels
 
                 if pm is not None:
-                    data = data.view(-1,28,28)
-                    data = data[:,perm]
-                    data = data.view(-1,1,28,28)
+                    data = data.view(-1, 28 * 28)
+                    data = data[:, perm]
+                    data = data.view(-1, 1, 28, 28)
 
                 optimizer.zero_grad()#zero optimizer gradients
                 output = model(data) # get output
@@ -164,7 +164,7 @@ def test(model,pm = None):
             data,label = data.to(device),label.to(device)
              # permutate pixels
             if pm is not None:
-                data = data.view(-1, 28, 28)
+                data = data.view(-1, 28 * 28)
                 data = data[:, perm]
                 data = data.view(-1, 1, 28, 28)
 
