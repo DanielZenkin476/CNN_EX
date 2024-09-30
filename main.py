@@ -142,7 +142,7 @@ def train(model, optimizer, pm = None ):
 
                 if pm is not None:
                     data = data.view(-1, 28 * 28)
-                    data = data[:, perm]
+                    data = data[:, pm]
                     data = data.view(-1, 1, 28, 28)
 
                 optimizer.zero_grad()#zero optimizer gradients
@@ -165,7 +165,7 @@ def test(model,pm = None):
              # permutate pixels
             if pm is not None:
                 data = data.view(-1, 28 * 28)
-                data = data[:, perm]
+                data = data[:, pm]
                 data = data.view(-1, 1, 28, 28)
 
             output = model(data)
@@ -183,9 +183,22 @@ print("FNN:")
 optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
 train(model_fnn, optimizer_fnn, pm=None)
 results['NN image'] = test(model_fnn, pm=None)
-print("CNN")
+print("CNN:")
 optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
 train(model_cnn, optimizer_cnn, pm=None)
 results['CNN image'] = test(model_cnn, pm=None)
 print(results)
 
+print['now with permutation:']
+print("FNN:")
+model_fnn = FC2Layer(input_size, n_hidden, output_size).to(device)
+optimizer_fnn = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
+train(model_fnn, optimizer_fnn, pm=perm)
+results['NN image permutation'] = test(model_fnn, pm=perm)
+
+print("CNN:")
+model_cnn = CNN(input_size, n_feature, output_size).to(device)
+optimizer_cnn = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
+train(model_cnn, optimizer_cnn, pm=perm)
+results['CNN image permutation'] = test(model_cnn, pm=perm)
+print(results)
