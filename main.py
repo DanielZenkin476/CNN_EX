@@ -204,7 +204,7 @@ results['CNN image permutation'] = test(model_cnn, pm=perm)
 
 # now to plot the results
 
-plt.bar(results.keys(), results.values(), width=0.4, color = ['r', 'g', 'b', 'y'])
+plt.bar(results.keys(), results.values(), width=0.2, color = ['r', 'g', 'b', 'y'])
 plt.ylim((min(results.values())-1, 100))
 plt.ylabel('Accuracy')
 plt.title('Results')
