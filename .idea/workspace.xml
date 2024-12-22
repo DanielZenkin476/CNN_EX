@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="added visualization of results in graph, still need to test ( fixed print with [] insted of ())">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="642e0bf6-451f-4341-b65a-cb2ebc3f35bd" name="Changes" comment="All works" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -242,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727690870246</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="All works">
+      <option name="closed" value="true" />
+      <created>1727691411213</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1727691411213</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -267,6 +272,7 @@
     <MESSAGE value="so the problem with test was a symptom from a permutation error (in dimensions) that fed too much data to model which caused the output to go BIG . should work now, need to test" />
     <MESSAGE value="added runs with permutation, changed in loop perm to pm ( to not use global var)" />
     <MESSAGE value="added visualization of results in graph, still need to test ( fixed print with [] insted of ())" />
-    <option name="LAST_COMMIT_MESSAGE" value="added visualization of results in graph, still need to test ( fixed print with [] insted of ())" />
+    <MESSAGE value="All works" />
+    <option name="LAST_COMMIT_MESSAGE" value="All works" />
   </component>
 </project>

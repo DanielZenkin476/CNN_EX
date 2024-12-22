@@ -6,7 +6,7 @@ import torch.utils.data as data
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
 import numpy
-from torchsummary import summary
+#from torchsummary import summary
 from tqdm import tqdm
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")# select cuda cores
@@ -92,7 +92,7 @@ n_hidden = 8
 
 model_fnn = FC2Layer(input_size, n_hidden, output_size).to(device)# send to device
 print(model_fnn)# print model
-summary(model_fnn, input_size=(1,28*28))# summary of data
+#summary(model_fnn, input_size=(1,28*28))# summary of data
 
 # second model - CNN(the good kind)
 #kernal size is 5 , input channels (1 - greyscale)
@@ -124,7 +124,7 @@ class CNN(nn.Module):
 n_feature = 6  # number of feature maps
 
 model_cnn = CNN(input_size, n_feature, output_size).to(device)
-summary(model_cnn, input_size=(1, 28, 28))
+#summary(model_cnn, input_size=(1, 28, 28))
 
 # now that we have the modeles ,need to create traning function
 
