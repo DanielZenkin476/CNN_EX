@@ -32,7 +32,7 @@ test_loader = torch.utils.data.DataLoader(datasets.MNIST('../data', train=False,
 
 
 # now to print result
-print(train_loader.dataset.__len__())# so pycharm is telling no such function exsists- guess not
+print(train_loader.dataset.__len__())
 print(test_loader.dataset.__len__())
 #image shape
 data_sample = train_loader.dataset.__getitem__(0)#gets first image
